@@ -49,7 +49,7 @@ class ToTensor (object):
         
         clip_average_HR_peaks = np.array(clip_average_HR_peaks)
         
-        return {'video_x': torch.from_numpy(video_x.astype(np.float)).float(), 'framerate': torch.from_numpy(framerate.astype(np.float)).double(), 'clip_average_HR_peaks': torch.from_numpy(clip_average_HR_peaks.astype(np.float)).float()}
+        return {'video_x': torch.from_numpy(video_x.astype(np.float64)).float(), 'framerate': torch.from_numpy(framerate.astype(np.float64)).double(), 'clip_average_HR_peaks': torch.from_numpy(clip_average_HR_peaks.astype(np.float64)).float()}
 
 
 class VIPL (Dataset):

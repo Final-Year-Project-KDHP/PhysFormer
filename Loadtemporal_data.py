@@ -77,7 +77,7 @@ class ToTensor (object):
         frame_rate = np.array(frame_rate)
         
         
-        return {'video_x': torch.from_numpy(video_x.astype(np.float)).float(), 'clip_average_HR': torch.from_numpy(clip_average_HR.astype(np.float)).float(), 'ecg': torch.from_numpy(ecg_label.astype(np.float)).float(), 'frame_rate': torch.from_numpy(frame_rate.astype(np.float)).float()}
+        return {'video_x': torch.from_numpy(video_x.astype(np.float64)).float(), 'clip_average_HR': torch.from_numpy(clip_average_HR.astype(np.float64)).float(), 'ecg': torch.from_numpy(ecg_label.astype(np.float64)).float(), 'frame_rate': torch.from_numpy(frame_rate.astype(np.float64)).float()}
 
 
 
