@@ -128,7 +128,7 @@ def train_test():
     
     # visual and save 
     #visual = FeatureMaP2Heatmap(x_visual, x_visual3232, x_visual1616)
-    sio.savemat( args.log+'/'+args.log+ '.mat' , {'outputs_rPPG_concat': results_rPPG})   
+    sio.savemat(args.log+ '.mat' , {'outputs_rPPG_concat': results_rPPG})   
     #sio.savemat( args.log+'/'+args.log+ '_HR.mat' , {'outputs_HR': results_HR_pred})     
 
        
