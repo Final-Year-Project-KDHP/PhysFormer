@@ -93,15 +93,24 @@ def train_test():
     results_rPPG = []
     results_HR_pred = []
     with torch.no_grad():
-        for i, sample_batched in enumerate(dataloader_test):
+        for i, sample_batched in enumerate(dataloader_test): # iterate only one time (only i = 0)
             
             inputs = sample_batched['video_x'].cuda()
+            print(inputs.shape)
             clip_average_HR, frame_rate = sample_batched['clip_average_HR_peaks'].cuda(), sample_batched['framerate'].cuda()
             
             rPPG_long = torch.randn(1).cuda()
      
             #HR = 0.0
-            for clip in range(inputs.shape[1]):
+            for clip in range(inputs.shape[1]): # iterate 4 times (4 clips)
+                # this model input has 6 dimension.
+                # torch.Size([1, 4, 3, 220, 128, 128])
+                # 1st dimension says its the default dimension when loading to_tensor. it has only 1 element.
+                # second dimesion says 4. it relate to the viseo clips. one video clip has 220 frames.
+                # third dimension says 3. it is RGB.
+                # fourth dimension says 220. it is depth of video. number of frames in a video clip.
+                # fifth channel and sixth channel says the width and height of the video respectively.
+                model_input = inputs[:,clip,:,:,:,:]
                 rPPG, Score1, Score2, Score3 = model(inputs[:,clip,:,:,:,:], gra_sharp)
                 
                 
